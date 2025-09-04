@@ -1,5 +1,4 @@
 #include <windows.h>
-#include "include/libmem/libmem.h"
 #include "ImGui/imgui_impl_win32.h"
 #include "w2s.h"
 #include "esp.h"
@@ -16,16 +15,8 @@
 #include "menu.h"
 #include <dwmapi.h>
 #include <d3d9.h>
-#pragma comment(lib, "libmem.lib")
 bool cnseemenu = true;
-struct PlayerPosition {
-	float screenPosition[2];
-	float state;
-	bool dead;
-	std::string name;
-};
 
-PlayerPosition players[64];
 uintptr_t GetModuleBaseAddress(DWORD processID, const TCHAR* moduleName) {
 	uintptr_t baseAddress = 0;
 	HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, processID);
@@ -203,4 +194,5 @@ int main() {
 
 	UnregisterClass(wc.lpszClassName, wc.hInstance);
 	return 0;
+
 }
